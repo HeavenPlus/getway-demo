@@ -3,18 +3,24 @@ spring:
     name: gateway-demo
   cloud:
     gateway:
-      routes:
-        - id: member
-          uri: lb://server-member/
-          filters:
-            - StripPrefix=1
-          predicates:
-            - Path=/member/**
+#      routes:
+#        - id: member
+#          uri: lb://server-member/
+#          filters:
+#            - StripPrefix=1
+#          predicates:
+#            - Path=/member/**
       discovery:
         locator:
           enabled: true
     nacos:
       discovery:
         server-addr: 127.0.0.1:8847
+    datasource:
+      url: jdbc:mysql://localhost:3310/gateway?useUnicode=true&characterEncoding=UTF-8
+      username: root
+      password: root123
+      driver-class-name: com.mysql.jdbc.Driver
 server:
   port: 83
+
